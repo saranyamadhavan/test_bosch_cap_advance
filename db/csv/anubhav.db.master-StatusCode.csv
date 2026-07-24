@@ -1,0 +1,6 @@
+STATUS,description
+P,Pending
+D,Delivered
+A,Approved
+X,Rejected
+O,Open

@@ -1,0 +1,108 @@
+### indicate a new call
+### test service document
+http://localhost:4004/CatalogService
+
+
+### Test Metadata document
+http://localhost:4004/CatalogService/$metadata
+
+
+### GET All employees
+http://localhost:4004/CatalogService/EmployeeSet
+
+
+### Get Single employee by ID
+http://localhost:4004/CatalogService/EmployeeSet/02BD2137-0890-1EEA-A6C2-BB55C19807FB
+   
+### Get Count of employees
+http://localhost:4004/CatalogService/EmployeeSet/$count
+
+
+### Pagination - load data chunk by chunk
+http://localhost:4004/CatalogService/EmployeeSet?$top=2&$skip=2
+
+
+### Filter - Get employees by country
+http://localhost:4004/CatalogService/EmployeeSet?$filter=bankName eq 'My Bank of San Francisco'
+
+
+### Filter - Get by pattern Search
+http://localhost:4004/CatalogService/EmployeeSet?$filter=contains(nameFirst,'John')
+
+
+### Get Selected columns
+http://localhost:4004/CatalogService/EmployeeSet?$select=nameFirst,nameLast
+
+
+### Create a new Employee
+POST http://localhost:4004/CatalogService/EmployeeSet
+Content-Type: application/json
+
+
+{
+ "nameFirst": "Cristiano",
+  "nameLast": "Ronaldo",
+  "bankName": "My Bank of San Francisco",
+  "salaryAmount":1000000,
+  "Currency_code":"USD"
+
+}
+
+
+### Update an existing Employee -- copy the id of last call
+PATCH http://localhost:4004/CatalogService/EmployeeSet/03f48f41-9986-4f5f-9491-25bf5b282b20
+Content-Type: application/json  
+
+
+{
+    "salaryAmount":999999,
+    "Currency_code":"USD"
+}
+
+
+### Delete an existing Employee -- copy the id of last call
+DELETE http://localhost:4004/CatalogService/EmployeeSet/03f48f41-9986-4f5f-9491-25bf5b282b20
+
+###Session 07- Working with service
+###Call our lazy loaded service
+GET http://localhost:4004/cds/ProductView
+
+
+###Load single product data
+GET http://localhost:4004/cds/ProductView/74867AD200E41EDBA5D8B06B26EB8052
+
+###GET All POs
+GET http://localhost:4004/CatalogService/PurchaseOrderSet
+
+
+###GET Single Purchase Order by ID
+GET http://localhost:4004/CatalogService/PurchaseOrderSet/74867AD200E41EDBA5D8B0C98DC32052
+
+
+#### Call the boost action for a specific Purchase Order
+POST http://localhost:4004/CatalogService/PurchaseOrderSet/74867AD200E41EDBA5D8B0C98DC32052/boost
+Content-Type: application/json
+
+
+{}
+
+
+###GET Single Purchase Order by ID
+GET http://localhost:4004/CatalogService/getLargestOrder()
+
+
+
+
+
+###Load single product data
+GET http://localhost:4004/cds/ProductView/74867AD200E41EDBA5D8B06B26EB8052?$expand=PurchaseOrders
+
+###Session 07- Working with service
+###Call our lazy loaded service
+GET http://localhost:4004/cds/ProductView
+
+###Since we added odata v2 adaptor, we can get the v2 response from CAPM
+###Which is compatible with SAPUI5 controls like Table, List, etc.
+http://localhost:4004/odata/v2/CatalogService/EmployeeSet
+
+

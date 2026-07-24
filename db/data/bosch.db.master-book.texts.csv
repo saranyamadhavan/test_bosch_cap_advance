@@ -1,0 +1,40 @@
+ID,locale,name
+1,hi,डिजिटल सिग्नल प्रोसेसिंग: सिद्धांत, एल्गोरिदम और अनुप्रयोग
+1,de,Digitale Signalverarbeitung: Prinzipien, Algorithmen und Anwendungen
+1,fr,Traitement Numérique du Signal : Principes, Algorithmes et Applications
+
+2,hi,सिग्नल और सिस्टम
+2,de,Signale und Systeme
+2,fr,Signaux et Systèmes
+
+3,hi,इलेक्ट्रॉनिक उपकरण और परिपथ सिद्धांत
+3,de,Elektronische Bauelemente und Schaltungstheorie
+3,fr,Dispositifs Électroniques et Théorie des Circuits
+
+4,hi,संचार प्रणाली
+4,de,Kommunikationssysteme
+4,fr,Systèmes de Communication
+
+5,hi,सूक्ष्म-इलेक्ट्रॉनिक परिपथ
+5,de,Mikroelektronische Schaltungen
+5,fr,Circuits Microélectroniques
+
+6,hi,कंप्यूटर संगठन और अभिकल्पना
+6,de,Rechnerorganisation und Entwurf
+6,fr,Organisation et Conception des Ordinateurs
+
+7,hi,ऑपरेटिंग सिस्टम की अवधारणाएँ
+7,de,Betriebssystemkonzepte
+7,fr,Concepts des Systèmes d’Exploitation
+
+8,hi,C में डेटा संरचनाएँ और एल्गोरिदम विश्लेषण
+8,de,Datenstrukturen und Algorithmenanalyse in C
+8,fr,Structures de Données et Analyse des Algorithmes en C
+
+9,hi,कंप्यूटर नेटवर्क
+9,de,Rechnernetze
+9,fr,Réseaux Informatiques
+
+10,hi,डेटाबेस सिस्टम अवधारणाएँ
+10,de,Datenbanksystemkonzepte
+10,fr,Concepts des Systèmes de Base de Données
