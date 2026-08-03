@@ -101,8 +101,40 @@ GET http://localhost:4004/cds/ProductView/74867AD200E41EDBA5D8B06B26EB8052?$expa
 ###Call our lazy loaded service
 GET http://localhost:4004/cds/ProductView
 
+### GET All employees
+http://localhost:4004/odata/v4/CatalogService/EmployeeSet
+Authorization: Basic saranya:1234
+
+### GET All employees
+http://localhost:4004/odata/v4/CatalogService/EmployeeSet
+Authorization: Basic saranya:1234
+
+### Create a new Employee
+POST http://localhost:4004/odata/v4/CatalogService/EmployeeSet
+Authorization: Basic pallavi:1234
+Content-Type: application/json
+
+
+{
+  "nameFirst": "Cristiano",
+  "nameLast": "Ronaldo",
+  "bankName": "My Bank of San Francisco",
+  "salaryAmount":100000,
+  "Currency_code":"USD"
+}
+
+
+
 ###Since we added odata v2 adaptor, we can get the v2 response from CAPM
 ###Which is compatible with SAPUI5 controls like Table, List, etc.
 http://localhost:4004/odata/v2/CatalogService/EmployeeSet
+Authorization: Basic anubhav:1234
+###Get all employees
+http://localhost:4004/odata/v4/CatalogService/EmployeeSet
+Authorization: Basic saranya:1234
+
+### GET All employees
+http://localhost:4004/odata/v4/CatalogService/EmployeeSet
+Authorization: Basic anubhav:1234
 
 

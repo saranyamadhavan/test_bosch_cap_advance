@@ -1,0 +1,62 @@
+{
+ "xsappname": "mycappname",
+ "tenant-mode": "dedicated",
+ "scopes": [
+  {
+   "name": "$XSAPPNAME.Display",
+   "description": "display"
+  },
+  {
+   "name": "$XSAPPNAME.Edit",
+   "description": "edit"
+  },
+  {
+   "name": "$XSAPPNAME.Delete",
+   "description": "delete"
+  }
+ ],
+ "attributes": [
+  {
+   "name": "spiderman",
+   "description": "Bank Name of employee",
+   "valueType": "string"
+  }
+ ],
+ "role-templates": [
+  {
+   "name": "Viewer",
+   "description": "View all Employees for given bank",
+   "default-role-name": "Viewer: View all Employees for given bank",
+   "scope-references": [
+    "$XSAPPNAME.Display"
+   ],
+   "attribute-references": [
+    {
+     "name": "spiderman"
+    }
+   ]
+  },
+  {
+   "name": "Editor",
+   "description": "Edit, delete employee",
+   "scope-references": [
+    "$XSAPPNAME.Edit",
+    "$XSAPPNAME.Delete"
+   ]
+  }
+ ],
+ "authorities": [
+  "$ACCEPT_GRANTED_AUTHORITIES"
+ ],
+ "oauth2-configuration": {
+  "token-validity": 900,
+  "redirect-uris": [
+   "https://*.cfapps.us10-001.hana.ondemand.com/login/callback"
+  ],
+  "credential-types": [
+   "binding-secret",
+   "x509"
+  ]
+ },
+ "xsenableasyncservice": "true"
+}

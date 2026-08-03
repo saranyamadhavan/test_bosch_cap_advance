@@ -1,10 +1,26 @@
 using { anubhav.db.master, anubhav.db.transaction } from '../db/datamodel';
  
  
-service CatalogService @(path:'/CatalogService') {
+service CatalogService @(path:'/CatalogService', requires: 'authenticated-user') {
    
-    @readonly
-    entity EmployeeSet as projection on master.employees;
+    //@readonly
+    entity EmployeeSet
+                         @(
+                            restrict: [
+                                {
+                                    grant: ['READ'], to: 'Display',
+                                    where: 'bankName = $user.spiderman'
+                                },
+                                {
+                                    grant: ['WRITE'], to: 'Edit'
+                                },
+                                {
+                                    grant: ['DELETE'], to: 'Delete'
+                                }
+                            ]
+                        )  
+ 
+    as projection on master.employees;
     @Capabilities.InsertRestrictions : {
         $Type : 'Capabilities.InsertRestrictionsType',
         Insertable : false
@@ -19,12 +35,20 @@ service CatalogService @(path:'/CatalogService') {
         odata.draft.bypass: true )
     as projection on transaction.purchaseorder{
         *,
-        case OVERALL.STATUS
-            when 'A' then 3
-            when 'R' then 1
-            when 'P' then 2
-            else 0
-        end as Spiderman : Integer,
+        case
+            when OVERALL.STATUS = 'A' then cast(3 as Integer)
+            when OVERALL.STATUS = 'D' then cast(3 as Integer)
+            when OVERALL.STATUS = 'X' then cast(1 as Integer)
+            when OVERALL.STATUS = 'P' then cast(2 as Integer)
+            else cast(0 as Integer)
+        end as Spiderman: Integer,
+        // case OVERALL.STATUS
+        //     when 'A' then 3
+        //     when 'D' then 3
+        //     when 'X' then 1
+        //     when 'P' then 2
+        //     else 0
+        // end as Spiderman: Integer,
         case OVERALL.STATUS
             when 'A' then 'Approved'
             when 'D' then 'Delivered'
@@ -49,7 +73,4 @@ service CatalogService @(path:'/CatalogService') {
     //function
     function getLargestOrder() returns PurchaseOrderSet;
  
- 
 }
- 
- 
